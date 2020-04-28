@@ -1,0 +1,29 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "npm run development -- --watch",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "build": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "*",
+    "autoprefixer": "*",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
+    "laravel-mix": "^5.0.4",
+    "laravel-mix-postcss-config": "^1.0.4",
+    "laravel-mix-tailwind": "^0.1.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "*",
+    "sass-loader": "^8.0.2",
+    "tailwindcss": "*",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {}
+}

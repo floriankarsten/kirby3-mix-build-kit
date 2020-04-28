@@ -1,0 +1,17 @@
+# System files
+Icon
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Laravel mix manifest
+htdocs/public/mix-manifest.json
+
+# Package json lock
+package-lock.json

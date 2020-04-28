@@ -1,0 +1,59 @@
+# You might wanna uncomment this
+# /content
+
+# Kirby source
+/kirby/
+/vendor/
+
+# built assets
+/public/assets/css/style.css
+/public/assets/css/style.css.map
+/public/assets/css/style.js
+/public/assets/css/style.js.map
+/public/assets/js/main.js
+/public/assets/js/main.js.map
+
+# composer lock
+composer.lock
+
+# System files
+# ------------
+
+Icon
+.DS_Store
+
+# Temporary files
+# ---------------
+
+/public/media/*
+!/public/media/index.html
+
+# Lock files
+# ---------------
+.lock
+
+# -------------SECURITY-------------
+# NEVER publish these files via Git!
+# -------------SECURITY-------------
+
+# Cache Files
+# ---------------
+
+/storage/cache/*
+!/storage/cache/index.html
+
+# Accounts
+# ---------------
+
+/storage/accounts/*
+!/storage/accounts/index.html
+
+# Sessions
+# ---------------
+
+/storage/sessions/*
+!/storage/sessions/index.html
+
+# License
+# ---------------
+/storage/config/.license
