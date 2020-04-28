@@ -2,7 +2,7 @@
 ## How to use
 To get you started 5 step procedure.
 ```
-1. git clone https://github.com/floriankarsten/kirby3-parcel-build-kit project
+1. git clone https://github.com/floriankarsten/kirby3-mix-build-kit project
 2. cd project
 3. npm install
 4. cd htdocs
