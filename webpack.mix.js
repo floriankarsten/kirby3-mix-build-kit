@@ -48,6 +48,7 @@ mix
       "./htdocs/public/assets/js/*.js",
       "./htdocs/public/assets/css/*.css",
       "./htdocs/site/templates/*.php",
+      './htdocs/site/templates/**/*.php',
       "./htdocs/site/snippets/*.php",
       "./htdocs/site/snippets/**/*.php",
       // not sure these two are useful but might be for you
