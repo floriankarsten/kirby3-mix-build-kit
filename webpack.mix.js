@@ -22,7 +22,11 @@ const cssnano = require('cssnano') ({
     }]
 });
 
+
 mix
+.webpackConfig({
+    devtool: 'inline-source-map'
+})
 .disableNotifications()
 .sourceMaps()
 .js('src/js/main.js', 'assets/js')
