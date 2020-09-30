@@ -1,9 +1,11 @@
+let kirby = require('./kirby.config.js');
+
 module.exports = {
 	purge: [
-        './htdocs/site/templates/*.php',
-        './htdocs/site/templates/**/*.php',
-        './htdocs/site/snippets/*.php',
-        './htdocs/site/snippets/**/*.php',
+        `./${kirby.projectFolder}/site/templates/*.php`,
+        `./${kirby.projectFolder}/site/templates/**/*.php`,
+        `./${kirby.projectFolder}/site/snippets/*.php`,
+        `./${kirby.projectFolder}/site/snippets/**/*.php`,
 	],
 	theme: {
 		extend: {

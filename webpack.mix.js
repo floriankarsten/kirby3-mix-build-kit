@@ -1,8 +1,6 @@
+let kirby = require('./kirby.config.js');
 let mix = require('laravel-mix');
-
 const tailwindcss = require('tailwindcss');
-
-
 const cssnano = require('cssnano') ({
     preset: ['default', {
         discardComments: {
@@ -12,6 +10,10 @@ const cssnano = require('cssnano') ({
 });
 
 
+
+
+
+
 mix
 .webpackConfig({
     devtool: 'inline-source-map'
@@ -19,7 +21,7 @@ mix
 .disableNotifications()
 .sourceMaps()
 .js('src/js/main.js', 'assets/js')
-.sass('src/css/style.scss', 'assets/css')
+.postCss('src/css/style.css', 'assets/css')
 .options({
     processCssUrls: false,
     postCss: [
@@ -34,15 +36,16 @@ mix
 .browserSync({
     proxy: 'mix.local', // change this url to your local url!
     files: [
-      "./htdocs/public/assets/js/*.js",
-      "./htdocs/public/assets/css/*.css",
-      "./htdocs/site/templates/*.php",
-      './htdocs/site/templates/**/*.php',
-      "./htdocs/site/snippets/*.php",
-      "./htdocs/site/snippets/**/*.php",
+    `./${kirby.projectFolder}/site/templates/*.php`,
+      `./htdocs/public/assets/js/*.js`,
+      `./htdocs/public/assets/css/*.css`,
+      `./htdocs/site/templates/*.php`,
+      `./htdocs/site/templates/**/*.php`,
+      `./htdocs/site/snippets/*.php`,
+      `./htdocs/site/snippets/**/*.php`,
       // not sure these two are useful but might be for you
-    //   "./htdocs/public/site/plugins/**/*.php",
-    //   "./htdocs/public/content/**/*.txt"
+    //   `./htdocs/public/site/plugins/**/*.php`,
+    //   `./htdocs/public/content/**/*.txt"
     ],
     notify: true
   });
