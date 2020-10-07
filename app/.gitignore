@@ -1,17 +1,31 @@
 # You might wanna uncomment this
-# /content
+content
+
+index.html
+composer.json
+storage
+
+media
+public/media
 
 # Kirby source
-/kirby/
-/vendor/
+kirby/
+vendor/
 
 # built assets
-/public/assets/css/style.css
-/public/assets/css/style.css.map
-/public/assets/css/style.js
-/public/assets/css/style.js.map
-/public/assets/js/main.js
-/public/assets/js/main.js.map
+public/assets/css/style.css
+public/assets/css/style.css.map
+public/assets/css/style.js
+public/assets/css/style.js.map
+public/assets/js/main.js
+public/assets/js/main.js.map
+
+assets/css/style.css
+assets/css/style.css.map
+assets/css/style.js
+assets/css/style.js.map
+assets/js/main.js
+assets/js/main.js.map
 
 # composer lock
 composer.lock

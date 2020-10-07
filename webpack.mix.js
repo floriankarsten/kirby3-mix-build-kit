@@ -1,5 +1,7 @@
 let kirby = require('./kirby.config.js');
 let mix = require('laravel-mix');
+
+
 const tailwindcss = require('tailwindcss');
 const cssnano = require('cssnano') ({
     preset: ['default', {
@@ -9,10 +11,8 @@ const cssnano = require('cssnano') ({
     }]
 });
 
-
-
-
-
+kirby.source.js = kirby.source.js || 'src/js/main.js';
+kirby.source.css = kirby.source.css || 'src/css/style.css';
 
 mix
 .webpackConfig({
@@ -20,32 +20,25 @@ mix
 })
 .disableNotifications()
 .sourceMaps()
-.js('src/js/main.js', 'assets/js')
-.postCss('src/css/style.css', 'assets/css')
+.js(kirby.source.js, 'assets/js')
+.postCss(kirby.source.css, 'assets/css')
 .options({
     processCssUrls: false,
     postCss: [
         tailwindcss('./tailwind.config.js'),
         require('autoprefixer'),
         ...process.env.NODE_ENV === 'production'
-        ? [cssnano] // what other postcss plugins should run when doing parcel build
+        ? [cssnano] // what other postcss plugins should run
         : []
     ],
 })
 .setPublicPath('htdocs/public')
 .browserSync({
-    proxy: 'mix.local', // change this url to your local url!
+    proxy: kirby.proxy,
     files: [
-    `./${kirby.projectFolder}/site/templates/*.php`,
-      `./htdocs/public/assets/js/*.js`,
-      `./htdocs/public/assets/css/*.css`,
-      `./htdocs/site/templates/*.php`,
-      `./htdocs/site/templates/**/*.php`,
-      `./htdocs/site/snippets/*.php`,
-      `./htdocs/site/snippets/**/*.php`,
-      // not sure these two are useful but might be for you
-    //   `./htdocs/public/site/plugins/**/*.php`,
-    //   `./htdocs/public/content/**/*.txt"
+        ...kirby.files.templates,
+        kirby.source.js,
+        kirby.source.css,
     ],
     notify: true
   });

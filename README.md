@@ -1,4 +1,4 @@
-# Kirby + Laravel mix + Tailwind minimal starter
+# Kirby + Laravel mix + Tailwind maximal starter
 ## How to use
 To get you started 5 step procedure.
 ```
