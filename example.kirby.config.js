@@ -1,11 +1,11 @@
-module.exports = {
+let kirby = {
 	// name of main folder that you can deploy
 	appFolder: "app",
 
 	// name of public (webroot) folder if you use one (empty for folder ./app as a root)
 	publicFolder: "public",
 
-	// url to browsersync proxy (depending on your webserver it could be localhost or some domain like project.dev)
+	// url to browsersync proxy (depending on your webserver it could be localhost or some domain like project.local)
 	proxy: "localhost",
 
 	// source files to build
@@ -15,17 +15,28 @@ module.exports = {
 	},
 
 	deploy: {
-		destination: 'fka:/var/www/test',
-		exclude: ['.git', '.gitignore', '.DS_Store', 'composer.json']
+		destination: 'fka:/var/www/100101.archi/htdocs',
+		exclude: ['.git', '.gitignore', '.DS_Store', 'composer.json', 'content', 'storage'] // super important to have content and storage in here
 	},
 	files: {
 		// this affects both purge css and live reloading you might want to add your custom plugins
 		templates: [
-			`./${this.appFolder}/site/templates/*.php`,
-			`./${this.appFolder}/site/templates/**/*.php`,
-			`./${this.appFolder}/site/snippets/*.php`,
-			`./${this.appFolder}/site/snippets/**/*.php`,
+			'site/templates/*.php',
+			'site/templates/**/*.php',
+			'site/snippets/*.php',
+			'site/snippets/**/*.php',
 		],
-	}
 
-}
+	}
+};
+
+// kirby.confing.js transforming & defaults
+kirby.source.js = kirby.source.js || 'src/js/main.js';
+kirby.source.css = kirby.source.css || 'src/css/style.css';
+// transforming files appfolder
+kirby.files.templates = kirby.files.templates.map((template) => `${kirby.appFolder}/${template}`);
+
+
+
+
+module.exports = kirby;

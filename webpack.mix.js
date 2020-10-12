@@ -1,7 +1,5 @@
 let kirby = require('./kirby.config.js');
 let mix = require('laravel-mix');
-
-
 const tailwindcss = require('tailwindcss');
 const cssnano = require('cssnano') ({
     preset: ['default', {
@@ -11,8 +9,7 @@ const cssnano = require('cssnano') ({
     }]
 });
 
-kirby.source.js = kirby.source.js || 'src/js/main.js';
-kirby.source.css = kirby.source.css || 'src/css/style.css';
+let publicPath = kirby.appFolder + '/' + kirby.publicFolder;
 
 mix
 .webpackConfig({
@@ -21,27 +18,29 @@ mix
 .disableNotifications()
 .sourceMaps()
 .js(kirby.source.js, 'assets/js')
-.postCss(kirby.source.css, 'assets/css')
+.postCss(kirby.source.css, 'assets/css',
+[
+    require('postcss-import'),
+    tailwindcss('./tailwind.config.js'),
+    require('postcss-nesting'),
+    require('autoprefixer'),
+    ...process.env.NODE_ENV === 'production'
+    ? [cssnano] // what other postcss plugins should run
+    : []
+])
 .options({
     processCssUrls: false,
-    postCss: [
-        tailwindcss('./tailwind.config.js'),
-        require('autoprefixer'),
-        ...process.env.NODE_ENV === 'production'
-        ? [cssnano] // what other postcss plugins should run
-        : []
-    ],
 })
-.setPublicPath('htdocs/public')
+.setPublicPath(publicPath)
 .browserSync({
     proxy: kirby.proxy,
     files: [
         ...kirby.files.templates,
-        kirby.source.js,
-        kirby.source.css,
+        publicPath +'/assets/css/style.css',
+        // publicPath +'/assets/js/main.js', // you may want this
     ],
-    notify: true
-  });
+    notify: false
+});
 
 
 

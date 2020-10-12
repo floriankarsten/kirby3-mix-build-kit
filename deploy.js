@@ -4,7 +4,7 @@ let Rsync = require('rsync');
 let arguments = process.argv.slice(2);
 let kirby = require('./kirby.config.js');
 
-if (!arguments.includes('deploy') | !arguments.includes('content')) {
+if (!arguments.includes('deploy') && !arguments.includes('content')) {
 	throw 'You need to provide if to deploy or get content!';
 }
 
