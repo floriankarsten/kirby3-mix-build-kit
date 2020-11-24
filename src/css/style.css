@@ -1,4 +1,5 @@
-/* with kirby php templates it should be ok to run purgecss on all but if you run into problems that could happen with frameworks like Nuxt.js consult https://tailwindcss.com/docs/controlling-file-size/#app */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* put your js here v2 of tailwind wont purge anything thats not in @layer {} by default */

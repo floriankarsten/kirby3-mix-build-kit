@@ -2,7 +2,7 @@ let kirby = {
 	// name of main folder that you can deploy
 	appFolder: "app",
 
-	// name of public (webroot) folder if you use one (empty for folder ./app as a root)
+	// name of public (webroot) folder if you use one (empty "" for appFolder as a root)
 	publicFolder: "public",
 
 	// url to browsersync proxy (depending on your webserver it could be localhost or some domain like project.local)
@@ -15,7 +15,7 @@ let kirby = {
 	},
 
 	deploy: {
-		destination: 'fka:/var/www/100101.archi/htdocs',
+		destination: 'youripadress',
 		exclude: ['.git', '.gitignore', '.DS_Store', 'composer.json', 'content', 'storage'] // super important to have content and storage in here
 	},
 	files: {
@@ -30,13 +30,11 @@ let kirby = {
 	}
 };
 
+
+// keep this here
 // kirby.confing.js transforming & defaults
 kirby.source.js = kirby.source.js || 'src/js/main.js';
 kirby.source.css = kirby.source.css || 'src/css/style.css';
 // transforming files appfolder
 kirby.files.templates = kirby.files.templates.map((template) => `${kirby.appFolder}/${template}`);
-
-
-
-
 module.exports = kirby;
